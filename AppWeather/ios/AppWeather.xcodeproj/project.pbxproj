@@ -647,10 +647,11 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = ZDLK282T45;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = TG2NG2JA6X;
+						DevelopmentTeam = ZDLK282T45;
 						SystemCapabilities = {
 							com.apple.iCloud = {
 								enabled = 1;
@@ -1094,6 +1095,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = ZDLK282T45;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1123,6 +1125,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = ZDLK282T45;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-document-picker/ios/RNDocumentPicker",
@@ -1150,7 +1153,7 @@
 				CODE_SIGN_ENTITLEMENTS = AppWeather/AppWeather.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = TG2NG2JA6X;
+				DEVELOPMENT_TEAM = ZDLK282T45;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-document-picker/ios/RNDocumentPicker",
@@ -1162,6 +1165,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.devphantom.AppWeather;
 				PRODUCT_NAME = AppWeather;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1173,7 +1177,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = AppWeather/AppWeather.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = TG2NG2JA6X;
+				DEVELOPMENT_TEAM = ZDLK282T45;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-document-picker/ios/RNDocumentPicker",
@@ -1185,6 +1189,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.devphantom.AppWeather;
 				PRODUCT_NAME = AppWeather;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
