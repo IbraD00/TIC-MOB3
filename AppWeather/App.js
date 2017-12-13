@@ -5,6 +5,7 @@
  */
 
 import React, { Component } from 'react';
+import { DocumentPicker, DocumentPickerUtil } from 'react-native-document-picker';
 import {
   Platform,
   StyleSheet,
@@ -20,6 +21,19 @@ const instructions = Platform.select({
 });
 
 export default class App extends Component<{}> {
+  componentDidMount() {
+    DocumentPicker.show({
+          filetype: [DocumentPickerUtil.images()],
+        },(error,res) => {
+          // Android
+          console.log(
+             res.uri,
+             res.type, // mime type
+             res.fileName,
+             res.fileSize
+          );
+        });
+  }
   render() {
     return (
       <View style={styles.container}>
