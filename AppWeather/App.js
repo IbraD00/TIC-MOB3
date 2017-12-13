@@ -10,7 +10,8 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  Button
 } from 'react-native';
 
 const instructions = Platform.select({
@@ -43,6 +44,12 @@ export default class App extends Component<{}> {
         <Text style={styles.instructions}>
           To get started, edit App.js
         </Text>
+        <Button
+          onPress={this.onPressLearnMore}
+          title="Learn More"
+          color="#841584"
+          accessibilityLabel="Learn more about this purple button"
+        />
         <Text style={styles.instructions}>
           {instructions}
         </Text>
