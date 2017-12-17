@@ -11,49 +11,104 @@ import {
   StyleSheet,
   Text,
   View,
-  Button
+  Button,
+  FlatList,
+  ListView,
+  AppRegistry,
+  TabBarIOS,
+  StatusBar,
+  Navigator
 } from 'react-native';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+//var list = require('./components/List');
+class Welcome extends Component {
+    render(){
+        return(
+            <Text style={styles.description}>Welcome</Text>
+        );
+    }
+}
+
+class More extends Component {
+    render(){
+        return(
+            <Text style={styles.description}>More</Text>
+        );
+    }
+}
+
+class TabBar extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+          selectedTab: 'welcome'
+        };
+      }
+
+    render(){
+        return(
+            <TabBarIOS
+                selectedTab={this.state.selectedTab}
+                style={styles.Tab}>
+              <TabBarIOS.Item
+                selected={this.state.selectedTab === 'welcome'}
+                systemIcon='downloads'
+                onPress={() => {
+                    this.setState({
+                        selectedTab: 'welcome',
+                    });
+                }}>
+                  <Welcome/>
+              </TabBarIOS.Item>
+              <TabBarIOS.Item
+                selected={this.state.selectedTab === 'more'}
+                systemIcon='most-viewed'
+                onPress={() => {
+                      this.setState({
+                          selectedTab: 'more',
+                      });
+                }}>
+                <More/>
+              </TabBarIOS.Item>
+            </TabBarIOS>
+        );
+    }
+}
+
+
+class Picker extends Component {
+    render(){
+        return(
+            <Button
+            onPress={() => {
+                DocumentPicker.show({
+                      filetype: [DocumentPickerUtil.images()],
+                    },(error,res) => {
+                      // Android
+                      console.log(
+                         res.uri,
+                         res.type, // mime type
+                         res.fileName,
+                         res.fileSize
+                      );
+                    });
+                }}
+              title="Upload file"
+              color="#841584"
+              accessibilityLabel="Learn more about this purple button"
+          />
+      );
+    }
+}
 
 export default class App extends Component<{}> {
-  componentDidMount() {
-    DocumentPicker.show({
-          filetype: [DocumentPickerUtil.images()],
-        },(error,res) => {
-          // Android
-          console.log(
-             res.uri,
-             res.type, // mime type
-             res.fileName,
-             res.fileSize
-          );
-        });
-  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Button
-          onPress={this.onPressLearnMore}
-          title="Learn More"
-          color="#841584"
-          accessibilityLabel="Learn more about this purple button"
-        />
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
-      </View>
+        //<List />
+        //<View><Picker /></View>
+        <TabBar />
     );
   }
 }
@@ -75,4 +130,21 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  description: {
+      fontSize: 20,
+      textAlign: 'center',
+      color: '#000',
+      justifyContent: 'center',
+      flex: 2,
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      padding: '30%'
+  },
+  tab: {
+      flex: 1,
+flexDirection: 'column',
+justifyContent: 'center',
+alignItems: 'center',
+  }
 });
