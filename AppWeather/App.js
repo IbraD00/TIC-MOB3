@@ -43,7 +43,8 @@ class TableView extends Component {
 class Chart extends Component {
     render(){
         return(
-            <Text style={styles.description}>ChartView</Text>
+            //<Text style={styles.description}>ChartView</Text>
+            <Picker />
         );
     }
 }
@@ -132,6 +133,7 @@ class Picker extends Component {
     render(){
         return(
             <Button
+                style={styles.btn}
             onPress={() => {
                 DocumentPicker.show({
                       filetype: [DocumentPickerUtil.images()],
@@ -192,6 +194,7 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       padding: '30%'
   },
+  btn: { paddingTop:'30%', width: 50, height: 50, backgroundColor: 'powderblue'},
   tab: {
       flex: 1,
       flexDirection: 'column',
@@ -201,10 +204,11 @@ const styles = StyleSheet.create({
       height: 200,
     },
     table: { width: 360, flexDirection: 'row' },
-    head: { backgroundColor: '#333', height: 40 },
+    head: { backgroundColor: '#fff', height: 40 },
     headText: { color: '#fff', textAlign: 'center' },
     titleText: { marginLeft: 6 },
     list: { height: 28, backgroundColor: '#f0f0f0' },
     listText: { textAlign: 'right', marginRight: 6 },
-    tableview: { paddingTop: '30%'}
+    tableview: { paddingTop: '30%'},
+
 });
