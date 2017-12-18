@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import List from './components/List'
 import TableView from './components/TableView'
 import Chart from './components/Chart'
+// import Newchart from './components/Newchart'
 import { TabBarIOS } from 'react-native';
 
 class Main extends Component {
@@ -54,4 +55,4 @@ class Main extends Component {
   }
 }
 
-export default Main
+export default Main;
