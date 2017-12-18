@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { View, Text, ListView } from 'react-native';
 
 class List extends Component {
     constructor() {
@@ -19,3 +19,5 @@ class List extends Component {
       );
     }
 }
+
+export default List;

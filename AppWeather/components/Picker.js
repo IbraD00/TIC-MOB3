@@ -26,3 +26,5 @@ class Picker extends Component {
       );
     }
 }
+
+export default Picker;

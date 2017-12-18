@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
-
+import { Table, Row, Rows } from 'react-native-table-component';
+import { View } from 'react-native';
 
 class TableView extends Component {
   render() {
@@ -12,21 +12,13 @@ class TableView extends Component {
 
     return (
       <View>
-        <Table style={styles.tableview}>
-          <Row data={tableHead} style={styles.head} textStyle={styles.text}/>
-          <Rows data={tableData} style={styles.row} textStyle={styles.text}/>
+        <Table>
+          <Row data={tableHead}/>
+          <Rows data={tableData}/>
         </Table>
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create(){
-    table: { width: 360, flexDirection: 'row' },
-    head: { backgroundColor: '#333', height: 40 },
-    headText: { color: '#fff', textAlign: 'center' },
-    titleText: { marginLeft: 6 },
-    list: { height: 28, backgroundColor: '#f0f0f0' },
-    listText: { textAlign: 'right', marginRight: 6 },
-    tableview: { paddingTop: '30%'}
-}
+export default TableView;
