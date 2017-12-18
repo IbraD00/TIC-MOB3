@@ -69,8 +69,8 @@ class List extends Component {
       return (
         <ListView
             style={styles.tab}
-          dataSource={this.state.dataSource}
-          renderRow={(rowData) => <Text>{rowData}</Text>}
+            dataSource={this.state.dataSource}
+            renderRow={(rowData) => <Text style={styles.listrow}>{rowData}</Text>}
         />
       );
     }
@@ -99,7 +99,7 @@ class TabBar extends Component {
                         selectedTab: 'list',
                     });
                 }}>
-                  <List/>
+                  <List style={styles.container}/>
               </TabBarIOS.Item>
 
               <TabBarIOS.Item
@@ -161,7 +161,10 @@ export default class App extends Component<{}> {
     return (
         //<List />
         //<View><Picker /></View>
-        <TabBar />
+        //<View>
+            <TabBar/>
+        //</View>
+
     );
   }
 }
@@ -171,7 +174,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#fcfcfc',
+  },
+  back: {
+      backgroundColor: 'red'
   },
   welcome: {
     fontSize: 20,
@@ -198,6 +204,19 @@ const styles = StyleSheet.create({
   tab: {
       flex: 1,
       flexDirection: 'column',
+  },
+  listrow: {
+      width:'100%',
+      flex: 1,
+      textAlign: 'center',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      fontWeight: 'bold',
+      borderWidth: 0.5,
+      backgroundColor: '#fcfcfc',
+      padding: 20,
+      fontSize: 20,
   },
   chart: {
       width: 200,
