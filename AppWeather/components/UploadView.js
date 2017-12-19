@@ -1,12 +1,25 @@
 import React, { Component } from 'react';
-import { View, ListView } from 'react-native';
+import { View, ListView, ScrollView } from 'react-native';
 import { DocumentPicker, DocumentPickerUtil } from 'react-native-document-picker';
-import { Button, Text } from 'react-native-elements';
+import { Button, Text, List, ListItem } from 'react-native-elements';
 
 import styleText from '../Styles/Text'
 import styleBtn from '../Styles/Button'
 import Body from '../Layout/Body'
 import Content from '../Layout/Content'
+
+
+const list = [
+  {
+    name: 'Amy Farha',
+    subtitle: 'Vice President'
+  },
+  {
+    name: 'Chris Jackson',
+    subtitle: 'Vice Chairman'
+  },
+]
+
 
 class UploadView extends Component {
     constructor() {
@@ -15,7 +28,7 @@ class UploadView extends Component {
       this.state = {
         dataSource: ds.cloneWithRows(['row 1', 'row 2']),
       };
-    }
+  }
 
     browse() {
       DocumentPicker.show({
@@ -42,10 +55,20 @@ class UploadView extends Component {
           />
           <Content>
             <Text h4>Historique</Text>
-            <ListView
-              dataSource={this.state.dataSource}
-              renderRow={(rowData) => <Text>{rowData}</Text>}
-            />
+            <ScrollView>
+                <List containerStyle={{marginBottom: 20}}>
+                  {
+                    list.map((l, i) => (
+                      <ListItem
+                        key={i}
+                        title={l.name}
+                        subtitle={l.subtitle}
+                      />
+                    ))
+                  }
+                </List>
+            </ScrollView>
+
           </Content>
         </Body>
       );

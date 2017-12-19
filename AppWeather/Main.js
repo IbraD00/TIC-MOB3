@@ -15,54 +15,54 @@ class Main extends Component {
   }
   render() {
     return(
-      <TabBarIOS
-        barStyle="black"
-        tintColor="white"
-        selectedTab={this.state.selectedTab}
-      >
-        <TabBarIOS.Item
-          title="Upload"
-          systemIcon='featured'
-          selected={this.state.selectedTab === 'list'}
-          onPress={() => {
-            this.setState({
-              selectedTab: 'list',
-            });
-          }}>
-          <UploadView/>
-        </TabBarIOS.Item>
+        <TabBarIOS
+          barStyle="black"
+          tintColor="white"
+          selectedTab={this.state.selectedTab}
+        >
+          <TabBarIOS.Item
+            title="Upload"
+            systemIcon='featured'
+            selected={this.state.selectedTab === 'list'}
+            onPress={() => {
+              this.setState({
+                selectedTab: 'list',
+              });
+            }}>
+            <UploadView/>
+          </TabBarIOS.Item>
 
-        <TabBarIOS.Item
-          selected={this.state.selectedTab === 'tab'}
-          title="Upload"
-          systemIcon='most-viewed'
-          onPress={() => {
-            this.setState({
-              selectedTab: 'tab',
-            });
-          }}>
-          <TableView/>
-        </TabBarIOS.Item>
+          <TabBarIOS.Item
+            selected={this.state.selectedTab === 'tab'}
+            title="Upload"
+            systemIcon='most-viewed'
+            onPress={() => {
+              this.setState({
+                selectedTab: 'tab',
+              });
+            }}>
+            <TableView/>
+          </TabBarIOS.Item>
 
-        <TabBarIOS.Item
-          selected={this.state.selectedTab === 'chart'}
-          systemIcon='recents'
-          title="Upload"
-          onPress={() => {
-            this.setState({
-              selectedTab: 'chart',
-            });
-          }}>
-          <View>
-              <ScrollView>
-                  <ChartLine/>
-                  <ChartBar/>
-              </ScrollView>
-          </View>
+          <TabBarIOS.Item
+            selected={this.state.selectedTab === 'chart'}
+            systemIcon='recents'
+            title="Upload"
+            onPress={() => {
+              this.setState({
+                selectedTab: 'chart',
+              });
+            }}>
+            <View>
+                <ScrollView>
+                    <ChartLine/>
+                    <ChartBar/>
+                </ScrollView>
+            </View>
 
-        </TabBarIOS.Item>
+          </TabBarIOS.Item>
 
-      </TabBarIOS>
+        </TabBarIOS>
     );
   }
 }
