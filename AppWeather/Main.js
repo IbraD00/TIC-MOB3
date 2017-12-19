@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import List from './components/List'
+import UploadView from './components/UploadView'
 import TableView from './components/TableView'
 import SimpleChart from './components/Chart'
 // import Newchart from './components/Newchart'
@@ -15,21 +15,25 @@ class Main extends Component {
   render() {
     return(
       <TabBarIOS
+        barStyle="black"
+        tintColor="white"
         selectedTab={this.state.selectedTab}
       >
         <TabBarIOS.Item
+          title="Upload"
           selected={this.state.selectedTab === 'list'}
-          systemIcon='featured'
+          systemIcon='history'
           onPress={() => {
             this.setState({
               selectedTab: 'list',
             });
           }}>
-          <List/>
+          <UploadView/>
         </TabBarIOS.Item>
 
         <TabBarIOS.Item
           selected={this.state.selectedTab === 'tab'}
+          title="Upload"
           systemIcon='most-viewed'
           onPress={() => {
             this.setState({
@@ -42,6 +46,7 @@ class Main extends Component {
         <TabBarIOS.Item
           selected={this.state.selectedTab === 'chart'}
           systemIcon='recents'
+          title="Upload"
           onPress={() => {
             this.setState({
               selectedTab: 'chart',
