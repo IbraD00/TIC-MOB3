@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import update from 'react-addons-update';
+import _ from 'lodash';
+
 import { View, ListView, ScrollView } from 'react-native';
 import { DocumentPicker, DocumentPickerUtil } from 'react-native-document-picker';
 import { Button, Text, List, ListItem, Icon } from 'react-native-elements';
@@ -30,19 +32,22 @@ class UploadView extends Component {
       DocumentPicker.show({
         filetype: [DocumentPickerUtil.allFiles(), 'public.content', 'public.composite-content'],
       },(error,res) => {
-        this.setState({
-          files: this.state.files.concat({
-            name: res.fileName,
-            type: res.type
+        let index = _.findIndex(this.state.files, (o) => { return o.name === res.fileName });
+        if (index === -1) {
+          this.setState({
+            files: _.concat(this.state.files, {
+              name: res.fileName,
+              type: res.type
+            })
           })
-        })
-        console.log('IIIICII');
-        console.log(
-          res.uri,
-          res.type, // mime type
-          res.fileName,
-          res.fileSize
-        );
+          console.log('IIIICII');
+          console.log(
+            res.uri,
+            res.type, // mime type
+            res.fileName,
+            res.fileSize
+          );
+        }
       });
     }
 
@@ -65,7 +70,7 @@ class UploadView extends Component {
             title={`Upload`}
           />
           <Content>
-            <Text h4>Historique {title}</Text>
+            <Text h4>Historique</Text>
             <ScrollView>
                 <List containerStyle={{marginBottom: 20}}>
                   {
