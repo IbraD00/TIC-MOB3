@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
+import update from 'react-addons-update';
 import { View, ListView, ScrollView } from 'react-native';
 import { DocumentPicker, DocumentPickerUtil } from 'react-native-document-picker';
 import { Button, Text, List, ListItem, Icon } from 'react-native-elements';
 
-import styleText from '../Styles/Text'
-import styleBtn from '../Styles/Button'
-import Body from '../Layout/Body'
-import Content from '../Layout/Content'
+import styleText from '../Styles/Text';
+import styleBtn from '../Styles/Button';
+import Body from '../Layout/Body';
+import Content from '../Layout/Content';
+
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 
 
@@ -44,6 +46,12 @@ class UploadView extends Component {
       });
     }
 
+    removeFile(index) {
+      this.setState({
+        files: update(this.state.files, { $splice: [[index, 1]] })
+      })
+    }
+
     render() {
       const { title, files } = this.state;
       return (
@@ -57,7 +65,7 @@ class UploadView extends Component {
             title={`Upload`}
           />
           <Content>
-            <Text h4>Historique</Text>
+            <Text h4>Historique {title}</Text>
             <ScrollView>
                 <List containerStyle={{marginBottom: 20}}>
                   {
@@ -66,13 +74,13 @@ class UploadView extends Component {
                         key={index}
                         title={item.name}
                         subtitle={item.type}
-                        rightIcon={<Icon name='close' />}
+                        onPressRightIcon={() => this.removeFile(index)}
+                        rightIcon={{name: 'close'}}
                       />
                     ))
                   }
                 </List>
             </ScrollView>
-
           </Content>
         </Body>
       );

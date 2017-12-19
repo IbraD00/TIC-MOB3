@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "react": "16.0.0",
+    "react-addons-update": "^15.6.2",
     "react-native": "0.51.0",
     "react-native-document-picker": "^2.1.0",
     "react-native-elements": "^0.18.5",
