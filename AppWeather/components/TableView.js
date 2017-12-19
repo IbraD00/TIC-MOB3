@@ -23,14 +23,14 @@ class TableView extends Component {
     ];
 
     return (
-        <Body title="Table Weather" >
+        <Body title="Table Weather">
             <ScrollView>
                 <View>
                   <List containerStyle={{marginBottom: 20, margin: 10}}>
                       {
                           tableHead.map((item, i) => (
                               <ListItem
-
+                                  key={i}
                                   hideChevron
                                   title={
                                   <Table>

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import UploadView from './components/UploadView'
-import TableView from './components/TableView'
-import ChartLine from './components/ChartLine'
-import ChartBar from './components/ChartBar'
-// import Newchart from './components/Newchart'
-import { Header } from 'react-native-elements';
 import { TabBarIOS, View, ScrollView } from 'react-native';
+import { Header } from 'react-native-elements';
+
+import UploadView from './components/UploadView';
+import TableView from './components/TableView';
+import ChartLine from './components/ChartLine';
+import ChartBar from './components/ChartBar';
 
 class Main extends Component {
   constructor(props) {
