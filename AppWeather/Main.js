@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import UploadView from './components/UploadView'
 import TableView from './components/TableView'
-import SimpleChart from './components/Chart'
+import ChartLine from './components/ChartLine'
+import ChartBar from './components/ChartBar'
 // import Newchart from './components/Newchart'
-import { TabBarIOS } from 'react-native';
+import { TabBarIOS, View, ScrollView } from 'react-native';
 
 class Main extends Component {
   constructor(props) {
@@ -21,8 +22,8 @@ class Main extends Component {
       >
         <TabBarIOS.Item
           title="Upload"
+          systemIcon='featured'
           selected={this.state.selectedTab === 'list'}
-          systemIcon='history'
           onPress={() => {
             this.setState({
               selectedTab: 'list',
@@ -52,7 +53,13 @@ class Main extends Component {
               selectedTab: 'chart',
             });
           }}>
-          <SimpleChart/>
+          <View>
+              <ScrollView>
+                  <ChartLine/>
+                  <ChartBar/>
+              </ScrollView>
+          </View>
+
         </TabBarIOS.Item>
 
       </TabBarIOS>

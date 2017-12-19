@@ -1,13 +1,12 @@
 import React, { Component } from "react";
-
 import ChartView from 'react-native-highcharts';
 
-class Chart extends Component {
+class ChartLine extends Component {
   render() {
       var Highcharts='Highcharts';
       var conf={
               chart: {
-                  type: 'spline',
+                  type: 'line',
                   animation: Highcharts.svg, // don't animate in old IE
                   marginRight: 10,
                   events: {
@@ -24,7 +23,7 @@ class Chart extends Component {
                   }
               },
               title: {
-                  text: 'Live random data'
+                  text: 'Chart Line data'
               },
               xAxis: {
                   type: 'datetime',
@@ -88,4 +87,4 @@ class Chart extends Component {
   }
 }
 
-export default Chart;
+export default ChartLine;
