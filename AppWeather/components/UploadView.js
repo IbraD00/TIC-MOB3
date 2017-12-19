@@ -28,7 +28,6 @@ class UploadView extends Component {
     }
 
     browse() {
-      console.log(this.state);
       DocumentPicker.show({
         filetype: [DocumentPickerUtil.allFiles(), 'public.content', 'public.composite-content'],
       },(error,res) => {
@@ -39,6 +38,14 @@ class UploadView extends Component {
               name: res.fileName,
               type: res.type
             })
+          }, () => {
+            fetch(url).then(function(response) {
+              console.log(response);
+            }).then(function(data) {
+              console.log(data);
+            }).catch(function() {
+              console.log("Booo");
+            });
           })
           console.log('IIIICII');
           console.log(
