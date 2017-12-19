@@ -1,38 +1,40 @@
 import React, { Component } from 'react';
 import { View, ListView, ScrollView } from 'react-native';
 import { DocumentPicker, DocumentPickerUtil } from 'react-native-document-picker';
-import { Button, Text, List, ListItem } from 'react-native-elements';
+import { Button, Text, List, ListItem, Icon } from 'react-native-elements';
 
 import styleText from '../Styles/Text'
 import styleBtn from '../Styles/Button'
 import Body from '../Layout/Body'
 import Content from '../Layout/Content'
-
-
-const list = [
-  {
-    name: 'Amy Farha',
-    subtitle: 'Vice President'
-  },
-  {
-    name: 'Chris Jackson',
-    subtitle: 'Vice Chairman'
-  },
-]
+const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 
 
 class UploadView extends Component {
     constructor() {
       super();
-      const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
       this.state = {
-        dataSource: ds.cloneWithRows(['row 1', 'row 2']),
+        title: 'ibra',
+        files: [{
+          name: 'text.txt',
+          type: 'text'
+        }]
       };
-  }
+      this.browse.bind(this);
+    }
 
     browse() {
+      console.log(this.state);
       DocumentPicker.show({
+        filetype: [DocumentPickerUtil.allFiles(), 'public.content', 'public.composite-content'],
       },(error,res) => {
+        this.setState({
+          files: this.state.files.concat({
+            name: res.fileName,
+            type: res.type
+          })
+        })
+        console.log('IIIICII');
         console.log(
           res.uri,
           res.type, // mime type
@@ -43,11 +45,12 @@ class UploadView extends Component {
     }
 
     render() {
+      const { title, files } = this.state;
       return (
         <Body title="Bienvenue dans AppWeather">
           <Button
             raised
-            onPress={this.browse}
+            onPress={this.browse.bind(this)}
             icon={{name: 'cloud', size: 16}}
             buttonStyle={styleBtn.btnPrimary}
             textStyle={styleBtn.btnPrimaryText}
@@ -58,11 +61,12 @@ class UploadView extends Component {
             <ScrollView>
                 <List containerStyle={{marginBottom: 20}}>
                   {
-                    list.map((l, i) => (
+                    files.map((item, index) => (
                       <ListItem
-                        key={i}
-                        title={l.name}
-                        subtitle={l.subtitle}
+                        key={index}
+                        title={item.name}
+                        subtitle={item.type}
+                        rightIcon={<Icon name='close' />}
                       />
                     ))
                   }
