@@ -6,6 +6,19 @@ import { View, StyleSheet, ScrollView } from 'react-native';
 import Body from '../Layout/Body';
 
 class TableView extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: {},
+      conf: {},
+      options: {}
+    };
+  }
+  componentWillReceiveProps() {
+  }
+  componentDidMount() {
+
+  }
   render() {
     const tableHead = [
       ['Air Temperature'],

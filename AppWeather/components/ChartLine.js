@@ -2,9 +2,29 @@ import React, { Component } from "react";
 import ChartView from 'react-native-highcharts';
 
 class ChartLine extends Component {
-  render() {
-    var Highcharts='Highcharts';
-    var conf={
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: {
+        LOCAL_WD_2MIN_AVG: []
+      },
+      conf: {},
+      options: {}
+    };
+    this.initChart = this.initChart.bind(this);
+  }
+  componentWillReceiveProps() {
+    console.log('hellllo');
+    this.initChart();
+  }
+  componentDidMount() {
+    console.log(this.props.data);
+    this.initChart();
+  }
+  initChart() {
+    var self = this;
+    var Highcharts = 'Highcharts';
+    var conf = {
       chart: {
         type: 'line',
         animation: Highcharts.svg, // don't animate in old IE
@@ -23,7 +43,7 @@ class ChartLine extends Component {
         }
       },
       title: {
-        text: 'Chart Line data'
+        text: 'Line graph'
       },
       xAxis: {
         type: 'datetime',
@@ -52,6 +72,7 @@ class ChartLine extends Component {
       exporting: {
         enabled: false
       },
+      series: [],
       series: [{
         name: 'Random data',
         data: (function () {
@@ -59,18 +80,21 @@ class ChartLine extends Component {
           var data = [],
           time = (new Date()).getTime(),
           i;
-
-          for (i = -19; i <= 0; i += 1) {
-            data.push({
-              x: time + i * 1000,
-              y: Math.random()
-            });
+          if (self.props.data['LOCAL_WD_2MIN_AVG'] !== undefined) {
+            for (i = 0; i <= self.props.data['LOCAL_WD_2MIN_AVG'].length; i += 1) {
+              data.push({
+                x: self.props.data['LOCAL_WD_2MIN_AVG'][i],
+                y: Math.random()
+              });
+            }
           }
+          console.log('jhjkjk');
+          console.log(data);
           return data;
         }())
       }]
     };
-
+    console.log(conf.series);
     const options = {
       global: {
         useUTC: false
@@ -81,8 +105,19 @@ class ChartLine extends Component {
       }
     };
 
+    this.setState({
+      options,
+      conf
+    }, () => {
+      this.forceUpdate()
+    })
+  }
+
+  render() {
+    const { conf, options } = this.state;
+
     return (
-      <ChartView style={{height:300}} config={conf} options={options}></ChartView>
+      <ChartView style={{ height:300 }} config={conf} options={options}></ChartView>
     );
   }
 }

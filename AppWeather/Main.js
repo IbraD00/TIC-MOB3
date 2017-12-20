@@ -11,11 +11,22 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: 'list'
+      selectedTab: 'list',
+      data: {}
     };
   }
+  updateData(data) {
+    this.setState({
+      data: data
+    }, () => {
+      this.forceUpdate();
+      console.log('GOOd');
+      console.log(data['LOCAL_WS_10MIN_MNM']);
+    })
+  }
   render() {
-    return(
+    const { data } = this.state;
+    return (
         <TabBarIOS
           barStyle="black"
           tintColor="white"
@@ -30,7 +41,7 @@ class Main extends Component {
                 selectedTab: 'list',
               });
             }}>
-            <UploadView/>
+            <UploadView updateData={(data) => this.updateData(data)}/>
           </TabBarIOS.Item>
 
           <TabBarIOS.Item
@@ -42,7 +53,7 @@ class Main extends Component {
                 selectedTab: 'tab',
               });
             }}>
-            <TableView/>
+            <TableView data={data} />
           </TabBarIOS.Item>
 
           <TabBarIOS.Item
@@ -56,7 +67,7 @@ class Main extends Component {
             }}>
             <View>
                 <ScrollView>
-                    <ChartLine/>
+                    <ChartLine data={this.state.data}/>
                     <ChartBar/>
                 </ScrollView>
             </View>
